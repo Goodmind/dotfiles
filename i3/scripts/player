@@ -1,0 +1,38 @@
+#!/bin/bash
+
+play() {
+    exec mpc -q load vk
+    exec mpc -q play
+
+    exec xfce4-terminal -T ncmpcpp -e ncmpcpp
+}
+
+toggle() {
+    exec mpc -q toggle
+}
+
+pause() {
+    exec mpc -q pause
+}
+
+stop() {
+    exec mpc -q stop
+}
+
+case "$1" in
+    play)
+        play
+        ;;
+
+    pause)
+        pause
+        ;;
+
+    stop)
+        stop
+        ;;
+
+    *)
+        toggle
+        ;;
+esac

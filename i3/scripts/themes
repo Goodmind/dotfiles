@@ -1,0 +1,6 @@
+#!/bin/bash
+
+themes=$(echo "$(j4-make-config -h | awk '/=================/{y=1;next}y')" > /tmp/themes.txt)
+res=$(rofi -p "Select theme: " -dmenu < /tmp/themes.txt)
+
+exec j4-make-config -r $res

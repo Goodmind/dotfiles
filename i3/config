@@ -1,0 +1,309 @@
+## i3 config file (v4)
+##
+## Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+
+set $border_size 3
+set $gaps_inner_size 20
+set $gaps_outer_size 20
+
+set $shrink resize shrink width 10000px; resize grow width 400px; resize shrink height 10000px; resize grow height 800px
+
+# class                     border  backgr. text    indicator
+client.focused              #ad7fa8 #75507b #ffffff #ad7fa8
+client.focused_inactive     #555753 #3c3c3c #ffffff #ad7fa8
+client.unfocused            #555753 #3c3c3c #888888 #ad7fa8
+client.urgent               #ad7fa8 #ad7fa8 #ffffff #ff0000
+
+
+## Font for window titles. Will also be used by the bar unless a different font
+## is used in the bar {} block below.
+# font pango:monospace 8
+
+## This font is widely installed, provides lots of unicode glyphs, right-to-left
+## text rendering and scalability on retina/hidpi displays (thanks to pango).
+font pango:Roboto 8
+
+## Window border style
+new_window normal $border_sizepx
+new_float normal $border_sizepx
+
+hide_edge_borders both
+
+gaps inner $gaps_inner_size
+gaps outer $gaps_outer_size
+
+## Before i3 v4.8, we used to recommend this one as the default:
+## font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+## The font above is very space-efficient, that is, it looks good, sharp and
+## clear in small sizes. However, its unicode glyph coverage is limited, the old
+## X core fonts rendering does not support right-to-left and this being a bitmap
+## font, it doesn’t scale on retina/hidpi displays.
+
+## Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+## start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+## kill focused window
+bindsym $mod+Shift+q kill
+
+## start dmenu (a program launcher)
+# bindsym $mod+d exec dmenu_run
+## There also is the (new) i3-dmenu-desktop which only displays applications
+## shipping a .desktop file. It is a wrapper around dmenu, so you need that
+## installed.
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -p "run: "'
+
+## change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+## alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+## move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+colon move right
+
+## alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+## split in horizontal orientation
+bindsym $mod+h split h
+
+## split in vertical orientation
+bindsym $mod+v split v
+
+## enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+## change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+## toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+## change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+## focus the parent container
+bindsym $mod+a focus parent
+
+## focus the child container
+# bindsym $mod+d focus child
+
+workspace_layout tabbed
+
+## switch to workspace
+workspace 0:Main        	output $PRIMARY
+workspace 1:Firefox        	output $PRIMARY
+workspace 2:Development        	output $PRIMARY
+workspace 3:Thunar        	output $PRIMARY
+workspace 4:Geeqie        	output $PRIMARY
+workspace 5:Misc        	output $PRIMARY
+workspace 6:IM        		output $PRIMARY
+workspace 7:Games        	output $PRIMARY
+workspace 8:GIMP        	output $PRIMARY
+workspace 9:Movies              output $PRIMARY
+workspace 10:Outer_space        output $PRIMARY
+
+## assigning windows to workspaces
+assign [class="Firefox"] → "1:Firefox"
+assign [class="jetbrains-webstorm"] → "2:Development"
+assign [class="Sublime_text"] → "2:Development"
+assign [class="Thunar"] → "3:Thunar"
+assign [class="Xfce4-terminal" title="ncmpcpp"] → "4:Music"
+assign [class="(?i)libreoffice*"] → "5:Misc"
+assign [class="Soffice"] → "5:Misc"
+assign [class="^qemu*"] → "5:Misc"
+assign [class="Transmission"] → "5:Misc"
+assign [class="spicec"] → "5:Misc"
+assign [class="Pidgin"] → "6:IM"
+assign [class="Skype"] → "6:IM"
+assign [class="Ts3client"] → "6:IM"
+assign [class="Telegram"] → "6:IM"
+assign [class="Wine"] → "7:Games"
+assign [class="Steam"] → "7:Games"
+assign [class="hl2_linux"] → "7:Games"
+assign [class="[tT]rine*"] → "7:Games"
+assign [class="TLauncher"] → "7:Games"
+assign [class="Minecraft"] → "7:Games"
+assign [class="net-mcgl-MCGLLauncher"] → "7:Games"
+assign [class="Gimp"] → "8:GIMP"
+assign [class="Vlc"] → "9:Movies"
+
+## floating windows
+# for_window [class="TLauncher"] floating enable
+# for_window [class="TLauncher" title="Консоль разработчика"] floating disable
+for_window [class="Shutter"] floating enable
+for_window [class="Vlc"] border pixel 0
+
+for_window [class="Firefox" instance="Places"] floating enable
+for_window [class="Firefox" instance="Browser"] floating enable
+for_window [class="Firefox" instance="Toplevel"] floating enable; $shrink
+for_window [class="Firefox" instance="Devtools"] floating enable; $shrink
+for_window [class="Xfce4-mixer"] floating enable; $shrink
+for_window [class="Xfrun4x"] floating enable; $shrink
+
+for_window [class="net-mcgl-MCGLLauncher"] floating enable
+for_window [class="^Minecraft[^Launcher]"] floating enable
+
+## move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1:Firefox
+bindsym $mod+Shift+2 move container to workspace 2:Development
+bindsym $mod+Shift+3 move container to workspace 3:Thunar
+bindsym $mod+Shift+4 move container to workspace 4:Music
+bindsym $mod+Shift+5 move container to workspace 5:Misc
+bindsym $mod+Shift+6 move container to workspace 6:IM
+bindsym $mod+Shift+7 move container to workspace 7:Games
+bindsym $mod+Shift+8 move container to workspace 8:GIMP
+bindsym $mod+Shift+9 move container to workspace 9:Movies
+bindsym $mod+Shift+0 move container to workspace 10:Outer_space
+
+bindsym $mod+Shift+Tab move container to workspace 0:Main
+
+
+## move between workspaces
+bindsym $mod+1 workspace 1:Firefox
+bindsym $mod+2 workspace 2:Development
+bindsym $mod+3 workspace 3:Thunar
+bindsym $mod+4 workspace 4:Music
+bindsym $mod+5 workspace 5:Misc
+bindsym $mod+6 workspace 6:IM
+bindsym $mod+7 workspace 7:Games
+bindsym $mod+8 workspace 8:GIMP
+bindsym $mod+9 workspace 9:Movies
+bindsym $mod+0 workspace 10:Outer_space
+
+bindsym $mod+Tab workspace 0:Main
+
+## reload the configuration file
+bindsym $mod+Shift+c reload
+
+## restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r exec --no-startup-id j4-make-config && i3-msg "restart"
+
+## exit i3 (logs you out of your X session)
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/power
+
+## resize mode
+bindsym $mod+r mode "resize"
+
+## Fullscreen print
+bindsym Print exec --no-startup-id shutter -f
+bindsym Mod1+Print exec --no-startup-id shutter -a
+bindsym Control+Print exec --no-startup-id shutter -s
+
+## Gaps control
+bindsym $mod+n gaps inner all set 1; gaps outer all set 0; border none; bar mode hide status_bar
+bindsym $mod+m gaps inner all set $gaps_inner_size; gaps outer all set $gaps_outer_size; border normal $border_sizepx; bar mode dock status_bar
+
+bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/player
+bindsym $mod+Shift+t exec --no-startup-id ~/.config/i3/scripts/themes
+
+
+## resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+## Autostart
+exec --no-startup-id redshift
+exec --no-startup-id mpd
+exec --no-startup-id nitrogen --restore &
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1k
+exec --no-startup-id compton --backend xrender
+exec --no-startup-id start-pulseaudio-x11
+exec --no-startup-id xfce4-volumed
+exec --no-startup-id nm-applet
+exec --no-startup-id i3-msg 'workspace 0:Main'
+
+exec --no-startup-id dropbox start -i
+exec --no-startup-id /usr/local/bin/sinopia
+exec --no-startup-id transmission-gtk
+exec --no-startup-id ~/.telegram-dist/Telegram -- %u
+
+## XFCE4 Tweaks
+bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/settings
+
+## Start i3bar to display a workspace bar (plus the system information i3status
+## finds out, if available)
+bar {
+    id status_bar
+    height 28
+
+	position top
+	workspace_buttons no
+	wheel_up_cmd nop
+	wheel_down_cmd nop
+    tray_output none
+
+	status_command py3status -c ~/.config/i3status/config
+
+	font pango:Roboto, FontAwesome 9
+
+colors {
+        background #3c3c3c
+        statusline #cccccc
+        focused_workspace    #ad7fa8 #75507b #ffffff
+        active_workspace     #75507b #ad7fa8 #ffffff
+        inactive_workspace   #3c3c3c #3c3c3c #bbbbbb
+        urgent_workspace     #df5757 #c22f2f #ffffff
+}}
+
+bar {
+    id navigation_bar
+    height 24
+
+    position bottom
+    workspace_buttons yes
+    strip_workspace_numbers yes
+    wheel_up_cmd nop
+    wheel_down_cmd nop
+
+    font pango:Roboto, FontAwesome 10
+
+colors {
+        background #3c3c3c
+        statusline #cccccc
+        focused_workspace    #ad7fa8 #75507b #ffffff
+        active_workspace     #75507b #ad7fa8 #ffffff
+        inactive_workspace   #3c3c3c #3c3c3c #bbbbbb
+        urgent_workspace     #df5757 #c22f2f #ffffff
+}}
