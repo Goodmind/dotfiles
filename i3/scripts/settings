@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [ "$GDMSESSION" == "xubuntu" ]; then
     exec xfce4-settings-manager &
-else 
+else
     exec lxappearance &
 fi

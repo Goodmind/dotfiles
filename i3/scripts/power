@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [ "$GDMSESSION" == "xubuntu" ]; then
     exec xfce4-session-logout

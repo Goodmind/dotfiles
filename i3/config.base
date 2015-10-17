@@ -2,13 +2,15 @@
 ##
 ## Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+ipc-socket ~/.local/share/i3/ipc.sock
 
-set $border_size 3
+set $mod Mod4
+set $shrink resize shrink width 10000px; resize grow width 400px; resize shrink height 10000px; resize grow height 800px
+
+# $i3-theme-variables
+set $border_size 5
 set $gaps_inner_size 20
 set $gaps_outer_size 20
-
-set $shrink resize shrink width 10000px; resize grow width 400px; resize shrink height 10000px; resize grow height 800px
 
 # $i3-theme-window
 
@@ -18,10 +20,10 @@ set $shrink resize shrink width 10000px; resize grow width 400px; resize shrink 
 
 ## This font is widely installed, provides lots of unicode glyphs, right-to-left
 ## text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Roboto 8
+font pango:Terminus 8
 
 ## Window border style
-new_window normal $border_sizepx
+new_window pixel $border_sizepx
 new_float normal $border_sizepx
 
 hide_edge_borders both
@@ -40,7 +42,7 @@ gaps outer $gaps_outer_size
 floating_modifier $mod
 
 ## start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec xfce4-terminal
 
 ## kill focused window
 bindsym $mod+Shift+q kill
@@ -51,6 +53,7 @@ bindsym $mod+Shift+q kill
 ## shipping a .desktop file. It is a wrapper around dmenu, so you need that
 ## installed.
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -p "run: "'
+bindsym Mod1+Tab exec --no-startup-id rofi -show window
 
 ## change focus
 bindsym $mod+j focus left
@@ -105,87 +108,88 @@ bindsym $mod+a focus parent
 workspace_layout tabbed
 
 ## switch to workspace
-workspace 0:Main        	output $PRIMARY
-workspace 1:Firefox        	output $PRIMARY
-workspace 2:Development        	output $PRIMARY
-workspace 3:Thunar        	output $PRIMARY
-workspace 4:Geeqie        	output $PRIMARY
-workspace 5:Misc        	output $PRIMARY
-workspace 6:IM        		output $PRIMARY
-workspace 7:Games        	output $PRIMARY
-workspace 8:GIMP        	output $PRIMARY
-workspace 9:Movies              output $PRIMARY
-workspace 10:Outer_space        output $PRIMARY
+workspace 0:home        	output $PRIMARY
+workspace 1:web         	output $PRIMARY
+workspace 2:development        	output $PRIMARY
+workspace 3:thunar        	output $PRIMARY
+workspace 4:music        	output $PRIMARY
+workspace 5:misc        	output $PRIMARY
+workspace 6:im        		output $PRIMARY
+workspace 7:games        	output $PRIMARY
+workspace 8:gimp        	output $PRIMARY
+workspace 9:movies              output $PRIMARY
+workspace 10:outer_space        output $PRIMARY
 
 ## assigning windows to workspaces
-assign [class="Firefox"] → "1:Firefox"
-assign [class="jetbrains-webstorm"] → "2:Development"
-assign [class="Sublime_text"] → "2:Development"
-assign [class="Thunar"] → "3:Thunar"
-assign [class="Xfce4-terminal" title="ncmpcpp"] → "4:Music"
-assign [class="(?i)libreoffice*"] → "5:Misc"
-assign [class="Soffice"] → "5:Misc"
-assign [class="^qemu*"] → "5:Misc"
-assign [class="Transmission"] → "5:Misc"
-assign [class="spicec"] → "5:Misc"
-assign [class="Pidgin"] → "6:IM"
+assign [class="Firefox"] → "1:web"
+assign [class="jetbrains-webstorm"] → "2:development"
+assign [class="Sublime_text"] → "2:development"
+assign [class="Atom"] → "2:development"
+assign [class="Thunar"] → "3:thunar"
+assign [class="Xfce4-terminal" title="ncmpcpp"] → "4:music"
+assign [class="(?i)libreoffice*"] → "5:misc"
+assign [class="Soffice"] → "5:misc"
+assign [class="^qemu*"] → "5:misc"
+assign [class="Transmission"] → "5:misc"
+assign [class="spicec"] → "5:misc"
+assign [class="Pidgin"] → "6:im"
 assign [class="Skype"] → "6:IM"
-assign [class="Ts3client"] → "6:IM"
-assign [class="Telegram"] → "6:IM"
-assign [class="Wine"] → "7:Games"
-assign [class="Steam"] → "7:Games"
-assign [class="hl2_linux"] → "7:Games"
-assign [class="[tT]rine*"] → "7:Games"
-assign [class="TLauncher"] → "7:Games"
-assign [class="Minecraft"] → "7:Games"
-assign [class="net-mcgl-MCGLLauncher"] → "7:Games"
-assign [class="Gimp"] → "8:GIMP"
-assign [class="Vlc"] → "9:Movies"
+assign [class="Ts3client"] → "6:im"
+assign [class="Telegram"] → "6:im"
+assign [class="Wine"] → "7:games"
+assign [class="Steam"] → "7:games"
+assign [class="hl2_linux"] → "7:games"
+assign [class="[tT]rine*"] → "7:games"
+assign [class="TLauncher"] → "7:games"
+assign [class="Minecraft"] → "7:games"
+assign [class="net-mcgl-MCGLLauncher"] → "7:games"
+assign [class="Gimp"] → "8:gimp"
+assign [class="Vlc"] → "9:movies"
 
 ## floating windows
 # for_window [class="TLauncher"] floating enable
 # for_window [class="TLauncher" title="Консоль разработчика"] floating disable
 for_window [class="Shutter"] floating enable
 for_window [class="Vlc"] border pixel 0
-
 for_window [class="Firefox" instance="Places"] floating enable
 for_window [class="Firefox" instance="Browser"] floating enable
 for_window [class="Firefox" instance="Toplevel"] floating enable; $shrink
 for_window [class="Firefox" instance="Devtools"] floating enable; $shrink
 for_window [class="Xfce4-mixer"] floating enable; $shrink
 for_window [class="Xfrun4x"] floating enable; $shrink
-
 for_window [class="net-mcgl-MCGLLauncher"] floating enable
 for_window [class="^Minecraft[^Launcher]"] floating enable
 
 ## move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1:Firefox
-bindsym $mod+Shift+2 move container to workspace 2:Development
-bindsym $mod+Shift+3 move container to workspace 3:Thunar
-bindsym $mod+Shift+4 move container to workspace 4:Music
-bindsym $mod+Shift+5 move container to workspace 5:Misc
-bindsym $mod+Shift+6 move container to workspace 6:IM
-bindsym $mod+Shift+7 move container to workspace 7:Games
-bindsym $mod+Shift+8 move container to workspace 8:GIMP
-bindsym $mod+Shift+9 move container to workspace 9:Movies
-bindsym $mod+Shift+0 move container to workspace 10:Outer_space
+bindsym $mod+Shift+1 move container to workspace 1:web
+bindsym $mod+Shift+2 move container to workspace 2:development
+bindsym $mod+Shift+3 move container to workspace 3:thunar
+bindsym $mod+Shift+4 move container to workspace 4:music
+bindsym $mod+Shift+5 move container to workspace 5:misc
+bindsym $mod+Shift+6 move container to workspace 6:im
+bindsym $mod+Shift+7 move container to workspace 7:games
+bindsym $mod+Shift+8 move container to workspace 8:gimp
+bindsym $mod+Shift+9 move container to workspace 9:movies
+bindsym $mod+Shift+0 move container to workspace 10:outer_space
 
-bindsym $mod+Shift+Tab move container to workspace 0:Main
+bindsym $mod+Shift+Tab move container to workspace 0:home
 
 
 ## move between workspaces
-bindsym $mod+1 workspace 1:Firefox
-bindsym $mod+2 workspace 2:Development
-bindsym $mod+3 workspace 3:Thunar
-bindsym $mod+4 workspace 4:Music
-bindsym $mod+5 workspace 5:Misc
-bindsym $mod+6 workspace 6:IM
-bindsym $mod+7 workspace 7:Games
-bindsym $mod+8 workspace 8:GIMP
-bindsym $mod+9 workspace 9:Movies
-bindsym $mod+0 workspace 10:Outer_space
+bindsym $mod+1 workspace 1:web
+bindsym $mod+2 workspace 2:development
+bindsym $mod+3 workspace 3:thunar
+bindsym $mod+4 workspace 4:music
+bindsym $mod+5 workspace 5:misc
+bindsym $mod+6 workspace 6:im
+bindsym $mod+7 workspace 7:games
+bindsym $mod+8 workspace 8:gimp
+bindsym $mod+9 workspace 9:movies
+bindsym $mod+0 workspace 10:outer_space
 
-bindsym $mod+Tab workspace 0:Main
+bindsym $mod+Tab workspace 0:home
+bindsym $mod+Mod1+Left workspace prev
+bindsym $mod+Mod1+Right workspace next
 
 ## reload the configuration file
 bindsym $mod+Shift+c reload
@@ -207,12 +211,20 @@ bindsym Mod1+Print exec --no-startup-id shutter -a
 bindsym Control+Print exec --no-startup-id shutter -s
 
 ## Gaps control
-bindsym $mod+n gaps inner all set 1; gaps outer all set 0; border none; bar mode hide status_bar
-bindsym $mod+m gaps inner all set $gaps_inner_size; gaps outer all set $gaps_outer_size; border normal $border_sizepx; bar mode dock status_bar
+bindsym $mod+n gaps inner all set 1; gaps outer all set 0; border none; bar mode hide navigation_bar
+bindsym $mod+m gaps inner all set $gaps_inner_size; gaps outer all set $gaps_outer_size; border pixel $border_sizepx; bar mode dock navigation_bar
 
 bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/player
 bindsym $mod+Shift+t exec --no-startup-id ~/.config/i3/scripts/themes
 
+bindsym $mod+Insert exec --no-startup-id ~/.config/i3/scripts/player
+bindsym $mod+End exec --no-startup-id mpc -q next
+bindsym $mod+Home exec --no-startup-id mpc -q prev
+
+bindsym $mod+KP_Add exec --no-startup-id amixer -q -D pulse set Master 1%+ unmute
+bindsym $mod+KP_Subtract exec --no-startup-id amixer -q -D pulse set Master 1%- unmute
+
+bindsym $mod+p exec --no-startup-id nitrogen
 
 ## resize window (you can also use the mouse for that)
 mode "resize" {
@@ -239,20 +251,14 @@ mode "resize" {
 }
 
 ## Autostart
-exec --no-startup-id redshift
-exec --no-startup-id mpd
-exec --no-startup-id nitrogen --restore &
-exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1k
-exec --no-startup-id compton --backend xrender
-exec --no-startup-id start-pulseaudio-x11
-exec --no-startup-id xfce4-volumed
-exec --no-startup-id nm-applet
-exec --no-startup-id i3-msg 'workspace 0:Main'
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id lxpolkit &
+exec --no-startup-id redshift &
+exec --no-startup-id xfce4-power-manager &
+exec --no-startup-id compton &
+exec --no-startup-id i3-msg 'workspace 0:home'
 
-exec --no-startup-id dropbox start -i
-exec --no-startup-id /usr/local/bin/sinopia
-exec --no-startup-id transmission-gtk
-exec --no-startup-id ~/.telegram-dist/Telegram -- %u
+exec dex -ae i3
 
 ## XFCE4 Tweaks
 bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/settings
@@ -261,32 +267,36 @@ bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/settings
 ## finds out, if available)
 bar {
     id status_bar
-    height 28
+    height 20
 
-	position top
-	workspace_buttons no
-	wheel_up_cmd nop
-	wheel_down_cmd nop
+    position top
+    workspace_buttons no
+    wheel_up_cmd nop
+    wheel_down_cmd nop
     tray_output none
 
-	status_command py3status -c ~/.config/i3status/config
+    # i3bar_command ~/.config/i3/bar/dzen2.sh
+    status_command py3status -c ~/.config/i3status/config
 
-	font pango:Roboto, FontAwesome 9
+    font pango:Terminus, FontAwesome 9
 
-	# $i3-theme-bar
+    # $i3-theme-bar
 }
 
 bar {
     id navigation_bar
-    height 24
+    height 20
+
+    modifier Mod1
 
     position bottom
     workspace_buttons yes
-    strip_workspace_numbers yes
     wheel_up_cmd nop
     wheel_down_cmd nop
 
-    font pango:Roboto, FontAwesome 10
+    status_command py3status -c ~/.config/i3status/config2
+
+    font pango:Terminus, FontAwesome 9
 
     # $i3-theme-bar
 }

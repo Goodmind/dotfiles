@@ -1,0 +1,19 @@
+# $i3-theme-window
+# <clientclass>             <border> <bg>   <text>  <indicator>
+client.focused              #EFF0F2 #EFF0F2 #5c616c #EFF0F2
+client.focused_inactive     #dddddd #EFF0F2 #5c616c #EFF0F2
+client.unfocused            #dddddd #EFF0F2 #888888 #EFF0F2
+client.urgent               #EFF0F2 #EFF0F2 #5c616c #ff0000
+
+# $i3-theme-bar
+colors {
+        # <bar>
+        background #EFF0F2
+        statusline #5c616c
+
+        # <workclass>        <border> <bg>   <text>
+        focused_workspace    #d9d9d9 #d9d9d9 #5c616c
+        active_workspace     #75507b #ad7fa8 #5c616c
+        inactive_workspace   #EFF0F2 #EFF0F2 #5c616c
+        urgent_workspace     #df5757 #C0D0E8 #5c616c
+}

@@ -1,5 +1,5 @@
 # $i3-theme-window
-# class                     border  backgr. text    indicator
+# <clientclass>             <border> <bg>   <text>  <indicator>
 client.focused              #ad7fa8 #75507b #ffffff #ad7fa8
 client.focused_inactive     #555753 #3c3c3c #ffffff #ad7fa8
 client.unfocused            #555753 #3c3c3c #888888 #ad7fa8
@@ -7,8 +7,11 @@ client.urgent               #ad7fa8 #ad7fa8 #ffffff #ff0000
 
 # $i3-theme-bar
 colors {
+        # <bar>
         background #3c3c3c
         statusline #cccccc
+
+        # <workclass>        <border> <bg>   <text>
         focused_workspace    #ad7fa8 #75507b #ffffff
         active_workspace     #75507b #ad7fa8 #ffffff
         inactive_workspace   #3c3c3c #3c3c3c #bbbbbb
