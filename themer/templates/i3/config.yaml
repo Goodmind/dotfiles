@@ -1,0 +1,28 @@
+variables:
+  primary: magenta
+  secondary: green
+  tertiary: red
+  special: yellow
+  transparency: 70
+  fontName: terminus
+  fontSize: 8
+  font: "pango:Terminus, FontAwesome 8"
+  border: 2
+  gapsInner: 20
+  gapsOuter: 20
+plugins:
+  parsers:
+    - themer.parsers.SweylaColorParser
+    - themer.parsers.KmeansColorParser
+    - themer.parsers.CachedColorParser
+  # - themer.parsers.vim.VimColorParser
+    - themer.ColorParser
+  activators:
+    - themer.activators.wallfix.WallfixActivator
+    - themer.activators.i3.I3Activator
+    - xresources.XResourcesActivator
+  # - themer.activators.acyl.ACYLActivator
+files:
+  Xresources.tpl: Xresources
+  index.tpl: index.html
+  i3.tpl: i3.conf
