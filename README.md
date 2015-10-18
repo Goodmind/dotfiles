@@ -1,9 +1,9 @@
-# dotfiles
+dotfiles
+========
 
-depends on ```py3status```, ```i3-gaps-git```, ```rofi```, ```python-themer-git```
+depends on `py3status`, `i3-gaps-git`, `rofi`, `python-themer-git`
 
-## Installing
+Installation
+------------
 
-```
-yaourt -S py3status i3-gaps-git rofi python-themer-git
-```
+    $ yaourt -S py3status i3-gaps-git rofi python-themer-git
