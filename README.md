@@ -1,7 +1,13 @@
 dotfiles
 ========
 
+Configuration files for i3 window manager
 
+<p align="center">
+<img src="https://cloud.githubusercontent.com/assets/3275424/10715366/17f0064a-7b36-11e5-964b-03029475895c.png" alt="desktop" />
+<br/>
+<i>This is how my desktop looks like as of october 2015</i>
+</p>
 
 Installation
 ------------
@@ -29,9 +35,3 @@ Setup
 
     $ git clone https://github.com/goodmind/dotfiles.git && cd dotfiles
     $ dest=$HOME ./bootstrap.sh
-
-
-Screenshot
-----------
-
-![screenfetch-2015-10-25_16-32-53](https://cloud.githubusercontent.com/assets/3275424/10715366/17f0064a-7b36-11e5-964b-03029475895c.png)
