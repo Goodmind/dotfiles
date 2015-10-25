@@ -8,7 +8,17 @@ Installation
 
 ### Archlinux
 
-    $ yaourt -S py3status i3-gaps-git rofi python-themer-git dotrix
+#### i3
+
+    $ yaourt -S i3-gaps-git rofi python-themer-git dotrix
+    
+#### mpd
+    
+    $ yaourt -S python-mpd2 mpd ncmpcpp
+    
+#### py3status
+    
+    $ yaourt -S py3status py3status-modules
 
 Setup
 -----
