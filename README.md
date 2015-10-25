@@ -8,23 +8,19 @@ Installation
 
 ### Archlinux
 
-#### Fonts
+##### Fonts
     
     $ yaourt -S ttf-dejavu terminus-font
 
-
-
-
-
-#### i3
+##### i3
 
     $ yaourt -S i3-gaps-git rofi python-themer-git dotrix feh
     
-#### mpd
+##### mpd
     
     $ yaourt -S python-mpd2 mpd ncmpcpp
     
-#### py3status
+##### py3status
     
     $ yaourt -S py3status py3status-modules
 
