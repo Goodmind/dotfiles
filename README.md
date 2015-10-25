@@ -13,4 +13,5 @@ Installation
 Setup
 -----
 
-    dest=$HOME ./bootstrap.sh
+    $ git clone https://github.com/goodmind/dotfiles.git && cd dotfiles
+    $ dest=$HOME ./bootstrap.sh
