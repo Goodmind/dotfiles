@@ -20,11 +20,11 @@ Installation
 <br/>
 ##### i3
 
-    $ yaourt -S i3-gaps-git rofi python-themer-git dotrix feh
+    $ yaourt -S i3-gaps-git rofi python-themer-git dotrix feh compton
     
 ##### mpd
     
-    $ yaourt -S python-mpd2 mpd ncmpcpp
+    $ yaourt -S python-mpd2 mpd ncmpcpp mpc
     
 ##### py3status
     
