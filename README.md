@@ -6,6 +6,10 @@ Installation
 
 ### Archlinux
 
+#### Fonts
+    
+    $ yaourt -S ttf-dejavu terminus-font
+
 #### i3
 
     $ yaourt -S i3-gaps-git rofi python-themer-git dotrix feh
