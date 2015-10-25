@@ -8,6 +8,7 @@ Configuration files for i3 window manager
 <br/>
 <i>This is how my desktop looks like as of october 2015</i>
 </p>
+<br/>
 
 Installation
 ------------
@@ -17,6 +18,9 @@ Installation
 ##### Fonts
     
     $ yaourt -S ttf-dejavu terminus-font
+
+<br/>
+<br/>
 
 ##### i3
 
