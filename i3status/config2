@@ -1,0 +1,71 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+    colors = true
+    interval = 1
+    color_bad = "#705050"
+    color_degraded = "#b58900"
+    color_good = "#859900"
+}
+
+order += "disk /"
+order += "disk /mnt/windows"
+order += "ethernet _first_"
+
+volume master {
+    format = "  %volume"
+    format_muted = "  %volume"
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
+    on_click 1 = "exec pavucontrol"
+    on_click 2 = "exec amixer set Master toggle"
+    on_click 3 = "exec killall pavucontrol"
+    on_click 4 = "exec amixer -q -D pulse set Master 1%+ unmute"
+    on_click 5 = "exec amixer -q -D pulse set Master 1%- unmute"
+}
+
+wireless _first_ {
+        format_up = "W: (%quality at %essid) %ip"
+        format_down = "W: down"
+}
+
+ethernet _first_ {
+        # if you use %speed, i3status requires root privileges
+        format_up = " %ip (%speed)"
+        format_down = " down"
+}
+
+run_watch DHCP {
+        pidfile = "/var/run/dhclient*.pid"
+}
+
+run_watch VPN {
+        pidfile = "/var/run/vpnc/pid"
+}
+
+tztime local {
+        format = "  %Y-%m-%d %H:%M:%S"
+}
+
+load {
+        format = "  %1min"
+}
+
+disk "/" {
+        format = "  %avail"
+        on_click 1 = "exec thunar /"
+        on_click 2 = "exec baobab /"
+}
+
+disk "/mnt/windows" {
+        format = "  %avail"
+        on_click 1 = "exec thunar /mnt/windows"
+        on_click 2 = "exec baobab /mnt/windows"
+}
