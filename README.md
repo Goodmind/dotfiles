@@ -9,3 +9,8 @@ Installation
 ### Archlinux
 
     $ yaourt -S py3status i3-gaps-git rofi python-themer-git dotrix
+
+Setup
+-----
+
+    dest=$HOME ./bootstrap.sh
