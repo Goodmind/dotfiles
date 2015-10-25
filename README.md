@@ -8,7 +8,7 @@ Installation
 
 #### i3
 
-    $ yaourt -S i3-gaps-git rofi python-themer-git dotrix
+    $ yaourt -S i3-gaps-git rofi python-themer-git dotrix feh
     
 #### mpd
     
