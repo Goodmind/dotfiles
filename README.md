@@ -6,7 +6,7 @@ Configuration files for i3 window manager
 <p align="center">
 <img src="https://cloud.githubusercontent.com/assets/3275424/11303687/f2760262-8fc5-11e5-90cd-a30d7a367644.png" alt="desktop" />
 <br/>
-<i>This is how my desktop looks like as of october 2015</i>
+<i>This is how my desktop looks like as of November 2015</i>
 </p>
 
 Installation
