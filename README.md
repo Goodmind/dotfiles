@@ -14,8 +14,8 @@ Installation
 
 ### Archlinux
 
-##### Fontswesome
-    
+##### Fonts
+
     $ yaourt -S ttf-dejavu terminus-font ttf-font-awesome
 <br/>
 ##### i3
