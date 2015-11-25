@@ -14,9 +14,9 @@ Installation
 
 ### Archlinux
 
-##### Fonts
+##### Fontswesome
     
-    $ yaourt -S ttf-dejavu terminus-font
+    $ yaourt -S ttf-dejavu terminus-font ttf-font-awesome
 <br/>
 ##### i3
 
@@ -28,7 +28,7 @@ Installation
     
 ##### py3status
     
-    $ yaourt -S py3status py3status-modules
+    $ yaourt -S i3status py3status py3status-modules
 
 Setup
 -----
