@@ -14,6 +14,10 @@ Installation
 
 ### Archlinux
 
+##### X.org
+
+    $ yaourt -S xorg-xrdb
+
 ##### Fonts
 
     $ yaourt -S ttf-dejavu terminus-font ttf-font-awesome
