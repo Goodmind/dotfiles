@@ -24,7 +24,7 @@ Installation
 <br/>
 ##### i3
 
-    $ yaourt -S i3-gaps-git rofi python-themer-git dotrix feh compton
+    $ yaourt -S i3-gaps-git rofi python-themer-git dotrix feh compton dex
     
 ##### mpd
     
