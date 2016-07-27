@@ -16,7 +16,7 @@ set $gapsOuter        {{ gapsOuter }}
 set $border           {{ border }}
 
 set $ws1  "1: web"
-set $ws2  "2: music"
+set $ws2  "2: media"
 set $ws3  "3: im"
 set $ws4  "4: term"
 set $ws5  "5: misc"
@@ -31,9 +31,7 @@ gaps inner $gapsInner
 gaps outer $gapsOuter
 
 exec_always --no-startup-id feh --bg-scale ~/.wallpaper.png
-exec --no-startup-id lxpolkit &
-exec --no-startup-id redshift &
-exec --no-startup-id xfce4-power-manager &
+exec --no-startup-id ~/.config/i3/scripts/daemons &
 exec --no-startup-id compton &
 
 exec --no-startup-id dex -ae i3
@@ -89,6 +87,7 @@ bindsym $mod+e layout toggle split
 
 bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+s floating enable; sticky toggle
 
 bindsym $mod+a focus parent
 bindsym $mod+b focus child
@@ -126,10 +125,10 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # colors                BORDER      BACKGROUND  TEXT        INDICATOR
-client.focused          $background $background $foreground $primary
-client.focused_inactive $background $primary    $foreground $background
-client.unfocused        $secondary  $secondary  $foreground $secondary
-client.urgent           $warning    $warning    $foreground $warning
+client.focused          $secondary  $secondary  $foreground $primary
+client.focused_inactive $background $background $foreground $background
+client.unfocused        $background $background $foreground $background
+client.urgent           $background $background $foreground $background
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -179,6 +178,11 @@ bar {
 }
 
 assign [class="Firefox"] → $ws1
+assign [class="bomi"] → $ws2
+assign [class="Pidgin"] → $ws3
+assign [class="Skype"] → $ws3
+assign [class="Ts3client"] → $ws3
+assign [class="Telegram"] → $ws3
 assign [class="jetbrains-webstorm"] → $ws5
 assign [class="Sublime_text"] → $ws5
 assign [class="Atom"] → $ws5
@@ -188,10 +192,8 @@ assign [class="Soffice"] → $ws5
 assign [class="^qemu*"] → $ws5
 assign [class="Transmission"] → $ws5
 assign [class="spicec"] → $ws5
-assign [class="Pidgin"] → $ws3
-assign [class="Skype"] → $ws3
-assign [class="Ts3client"] → $ws3
-assign [class="Telegram"] → $ws3
+assign [class="Gimp"] → $ws5
+assign [class="Vlc"] → $ws5
 assign [class="Wine"] → $ws6
 assign [class="Steam"] → $ws6
 assign [class="hl2_linux"] → $ws6
@@ -199,8 +201,6 @@ assign [class="[tT]rine*"] → $ws6
 assign [class="TLauncher"] → $ws6
 assign [class="Minecraft"] → $ws6
 assign [class="net-mcgl-MCGLLauncher"] → $ws6
-assign [class="Gimp"] → $ws5
-assign [class="Vlc"] → $ws5
 
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
@@ -213,7 +213,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/power
 
 bindsym $mod+n gaps inner all set 1; gaps outer all set 0; border none; bar mode hide navigation_bar
-bindsym $mod+m gaps inner all set $gapsInner; gaps outer all set $gapsOuter; border pixel $borderpx; bar mode dock navigation_bar
+bindsym $mod+m gaps inner all set $gapsInner; gaps outer all set $gapsOuter; border pixel $border; bar mode dock navigation_bar
 
 mode "resize" {
         bindsym j resize shrink width 10 px or 10 ppt

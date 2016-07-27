@@ -14,5 +14,8 @@ else
     if [ $res = "shutdown" ]; then
 	   dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.PowerOff" boolean:true
     fi
+    if [ $res = "lock" ]; then
+           dm-tool lock
+    fi
     exit 0
 fi
