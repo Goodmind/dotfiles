@@ -16,14 +16,20 @@ general {
 
 order += "volume master"
 order += "disk /"
-order += "disk /media/windows"
+order += "disk /home"
+order += "disk /run/media/goodmind/Data"
 # order += "run_watch DHCP"
 # order += "run_watch VPN"
 # order += "wireless _first_"
 order += "ethernet _first_"
 order += "load"
+order += "keyboard_layout"
 order += "tztime local"
-order += "mpd_status"
+# order += "mpd_status"
+
+keyboard_layout {
+	cache_timeout = 0
+}
 
 mpd_status {
         name = "  "
@@ -43,11 +49,11 @@ volume master {
     device = "default"
     mixer = "Master"
     mixer_idx = 0
-    on_click 1 = "exec xfce4-mixer"
+    on_click 1 = "exec pavucontrol"
     on_click 2 = "exec amixer set Master toggle"
-    on_click 3 = "exec killall xfce4-mixer"
-    on_click 4 = "exec amixer -q -D pulse set Master 1%+ unmute"
-    on_click 5 = "exec amixer -q -D pulse set Master 1%- unmute"
+    on_click 3 = "exec killall pavucontrol"
+    on_click 4 = "exec pactl set-sink-volume 0 +1%"
+    on_click 5 = "exec pactl -- set-sink-volume 0 -1%"
 }
 
 wireless _first_ {
@@ -83,8 +89,14 @@ disk "/" {
         on_click 2 = "exec baobab /"
 }
 
-disk "/media/windows" {
+disk "/home" {
         format = "  %avail"
-        on_click 1 = "exec thunar /media/windows"
-        on_click 2 = "exec baobab /media/windows"
+        on_click 1 = "exec thunar /home"
+        on_click 2 = "exec baobab /home"
+}
+
+disk "/run/media/goodmind/Data" {
+        format = "  %avail"
+        on_click 1 = "exec thunar /run/media/goodmind/Data"
+        on_click 2 = "exec baobab /run/media/goodmind/Data"
 }

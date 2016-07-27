@@ -14,8 +14,8 @@ general {
     color_good = "#859900"
 }
 
-order += "disk /"
-order += "disk /mnt/windows"
+#order += "disk /"
+#order += "disk /mnt/windows"
 order += "ethernet _first_"
 
 volume master {
