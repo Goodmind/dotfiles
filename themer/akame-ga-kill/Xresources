@@ -1,6 +1,5 @@
-rofi.bg:   #201d1d
-rofi.fg:   #a04d48
-rofi.hlfb: #2c2c2c
-rofi.hlfg: #201d1d
-
-
+rofi.color-enabled: true
+rofi.color-window: #3c3c3c, #2c2c2c, #3c3c3c
+rofi.color-normal: #3c3c3c, #a04d48, #3c3c3c, #2c2c2c, #3c3c3c
+rofi.color-active: #3c3c3c, #3c3c3c, #3c3c3c, #3c3c3c, #3c3c3c
+rofi.color-urgent: #3c3c3c, #ffbf00, #3c3c3c, #ffbf00, #3c3c3c

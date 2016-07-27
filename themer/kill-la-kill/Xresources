@@ -1,5 +1,5 @@
-rofi.bg:   #1b1d20
-rofi.fg:   #98a0ab
-rofi.hlfb: #d9d9d9
-rofi.hlfg: #1b1d20
-
+rofi.color-enabled: true
+rofi.color-window: #EFF0F2, #d9d9d9, #EFF0F2
+rofi.color-normal: #EFF0F2, #98a0ab, #EFF0F2, #d9d9d9, #EFF0F2
+rofi.color-active: #EFF0F2, #EFF0F2, #EFF0F2, #EFF0F2, #EFF0F2
+rofi.color-urgent: #EFF0F2, #babec5, #EFF0F2, #babec5, #EFF0F2
