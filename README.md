@@ -4,9 +4,9 @@ dotfiles
 Configuration files for i3 window manager
 
 <p align="center">
-<img src="https://cloud.githubusercontent.com/assets/3275424/14023180/627cf508-f20d-11e5-969e-678e816dd056.png" alt="desktop" />
+<img src="http://i.imgur.com/y5sjnXN.jpg" alt="desktop" />
 <br/>
-<i>This is how my desktop looks like as of March 2016</i>
+<i>This is how my desktop looks like as of August 2016</i>
 </p>
 
 Installation
