@@ -4,7 +4,7 @@ dotfiles
 Configuration files for i3 window manager
 
 <p align="center">
-<img src="http://imgur.com/y5sjnXN" alt="desktop" /> 
+<img src="http://i.imgur.com/y5sjnXN.jpg" alt="desktop" /> 
 <br/>
 <i>This is how my desktop looks like as of August 2016</i>
 </p>
