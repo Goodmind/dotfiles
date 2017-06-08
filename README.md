@@ -21,7 +21,8 @@ Installation
 ##### Fonts
 
     $ yaourt -S ttf-dejavu terminus-font ttf-font-awesome
-<br/>
+
+
 ##### i3
 
     $ yaourt -S i3-gaps-git rofi python-themer-git dotrix feh compton dex
